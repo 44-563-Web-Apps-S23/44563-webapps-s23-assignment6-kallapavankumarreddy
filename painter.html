@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html>
+    <head>
  <title>Assignment 06</title>
+    </head>
 <body>
-
 <h2>Painter entry Pavan Kumar Reddy Kalla</h2>
-
 <form>
     <label for="form_painter"> The hidden painter name </label>
     <input type ="password" id="password" name="form_painter" min=10 max=50 step=2 value="Monet"> <br>
-
     <label for="form_check">Guess the painter</label>
     <input type ="text" id="check" name="form_check" min=10 max=50 step=2> <br>
-
     <input type="button" onclick="checkPainter()" value="Check the guess">
 </form>
 <br>
 <div class="container">
     <img src="Alstroemeria.jpg" id="picture" onclick="selectImage()" alt="Alstroemeria" style="width: 100px;height: 100px;">
 </div>
-
 <p id="result">Result </p>
 <script> 
 var useImage=1 
@@ -37,18 +34,22 @@ function selectImage() {
 }
 var good=0
 var oops=0
-
 function checkPainter(){
     console.log("Getting form values")
     password = document.getElementById("password").value
     check = document.getElementById("check").value
     confirmed = confirm("Are these the values? "+password+" and "+check)
-    
     out = document.getElementById("result")
     if(password==check){
         alert("You got it right")
         good=good+1
-    } else {
+    } 
+    else if(oops >= 10){
+        document.getElementById("btn").onclick = giveAlert();
+        oops=oops+1
+
+    }
+    else {
         oops=oops+1
         alert('Sorry')
     }
