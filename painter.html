@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
- <title>Assignment 06</title>
+ <title>Assignment 06</title>  
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
+ integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" 
+ integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
     </head>
 <body>
 <h2>Painter entry Pavan Kumar Reddy Kalla</h2>
@@ -10,7 +17,7 @@
     <input type ="password" id="password" name="form_painter" min=10 max=50 step=2 value="Monet"> <br>
     <label for="form_check">Guess the painter</label>
     <input type ="text" id="check" name="form_check" min=10 max=50 step=2> <br>
-    <input type="button" onclick="checkPainter()" value="Check the guess">
+    <input type="button" class="btn btn-primary" onclick="checkPainter()" id="btn" value="Check the guess">
 </form>
 <br>
 <div class="container">
@@ -35,6 +42,10 @@ function selectImage() {
 var good=0
 var oops=0
 function checkPainter(){
+    if(oops>=10){
+        giveAlert()
+        document.getElementById("btn").style.visibility="hidden"
+    }else{
     console.log("Getting form values")
     password = document.getElementById("password").value
     check = document.getElementById("check").value
@@ -53,6 +64,7 @@ function checkPainter(){
         oops=oops+1
         alert('Sorry')
     }
+}
     out.innerHTML ="Right count: " +good+" Wrong count: "+oops
 }
 function giveAlert() {
